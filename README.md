@@ -94,3 +94,14 @@ sg.send(to='to@example.com',
 - Add documentation.
 - Add tests.
 - Add makefile.
+
+## Tests
+
+```console
+$ pip install -r requirements-dev.txt
+$ pytest
+```
+
+## License
+
+MIT
