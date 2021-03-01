@@ -82,6 +82,11 @@ sg.send(to='to@example.com',
 
 ## Changelog
 
+| 1.0.1 | 01/03/2021 |
+| ----- | ---------- |
+
+- Fix description and useful tags for PyPi.
+
 | 1.0.0 | 01/03/2021 |
 | ----- | ---------- |
 
