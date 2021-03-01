@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name="sendgrify",
-    version="1.0.1",
+    version="1.0.2",
     url="https://github.com/sdelquin/sendgrify.git",
     author="Sergio Delgado Quintero",
     author_email="sdelquin@gmail.com",

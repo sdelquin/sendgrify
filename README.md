@@ -82,6 +82,12 @@ sg.send(to='to@example.com',
 
 ## Changelog
 
+| 1.0.2 | 01/03/2021 |
+| ----- | ---------- |
+
+- Relocate tests.
+- Add license and tests documentation.
+
 | 1.0.1 | 01/03/2021 |
 | ----- | ---------- |
 
