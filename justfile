@@ -1,7 +1,7 @@
 dev:
     pip install -e .
 build: clean
-    python setup.py bdist
+    python setup.py sdist bdist
 upload-test: build
     twine upload --repository testpypi dist/*
 upload: build
