@@ -4,7 +4,7 @@ import pytest
 import python_http_client
 import sendgrid
 
-from sendgrify.core import SendGrid
+from sendgrify import SendGrid
 
 
 class MockHttpClient:
@@ -33,7 +33,7 @@ def test_send(sg_handler):
     to = 'to@example.com'
     subject = 'PyTest'
     msg = 'PyTest'
-    sg_handler.send(to, subject, msg)
+    sg_handler.send(to=to, subject=subject, msg=msg)
     assert sg_handler.data["personalizations"][0]["to"] == [{'email': to}]
     assert sg_handler.data["personalizations"][0]["subject"] == subject
     assert sg_handler.data["content"][0]["value"] == msg
@@ -45,7 +45,7 @@ def test_cc(sg_handler):
     subject = 'PyTest'
     msg = 'PyTest'
     cc = ['one@example.com', 'two@example.com']
-    sg_handler.send(to, subject, msg, cc=cc)
+    sg_handler.send(to=to, subject=subject, msg=msg, cc=cc)
     assert cc == [t['email'] for t in sg_handler.data["personalizations"][0]["cc"]]
     assert sg_handler.sg.client.post_made is True
 
@@ -55,7 +55,7 @@ def test_bcc(sg_handler):
     subject = 'PyTest'
     msg = 'PyTest'
     bcc = ['one@example.com', 'two@example.com']
-    sg_handler.send(to, subject, msg, bcc=bcc)
+    sg_handler.send(to=to, subject=subject, msg=msg, bcc=bcc)
     assert bcc == [t['email'] for t in sg_handler.data["personalizations"][0]["bcc"]]
     assert sg_handler.sg.client.post_made is True
 
@@ -65,7 +65,7 @@ def test_attachments(sg_handler):
     subject = 'PyTest'
     msg = 'PyTest'
     attachments = ['README.md', 'LICENSE']
-    sg_handler.send(to, subject, msg, attachments=attachments)
+    sg_handler.send(to=to, subject=subject, msg=msg, attachments=attachments)
     assert all([a['content'] for a in sg_handler.data['attachments']])
     assert attachments == [a['filename'] for a in sg_handler.data['attachments']]
     assert sg_handler.sg.client.post_made is True
