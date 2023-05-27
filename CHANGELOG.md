@@ -8,16 +8,12 @@ Released XXXX-XX-XX
 
 ## Version 2.0.0
 
+Released 2023-05-27
+
 - Force named parameters for `send()`.
 - Add [justfile](./justfile) to automate operations.
 - Add [README](./README.md) to [setup.py](./setup.py).
 - Deprecate `html` parameter in favor of `as_markdown`.
-
-## Version 1.2.0
-
-Released 2023-05-27
-
-- Base restructuring of project.
 
 ## Version 1.0.2
 
