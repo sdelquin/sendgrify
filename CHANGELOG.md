@@ -6,6 +6,12 @@ Releases use [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch
 
 Released XXXX-XX-XX
 
+## Version 2.0.1
+
+Released 2023-05-27
+
+- Fix build issues.
+
 ## Version 2.0.0
 
 Released 2023-05-27
