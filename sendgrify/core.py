@@ -2,20 +2,31 @@ import base64
 import json
 import os
 
+import markdown
 import sendgrid
 from python_http_client.exceptions import BadRequestsError
 
 
 class SendGrid:
-    def __init__(self, api_key, from_addr, from_name):
-        self.sg = sendgrid.SendGridAPIClient(api_key=api_key)
+    def __init__(self, apikey: str, from_addr: str, from_name: str):
+        self.sg = sendgrid.SendGridAPIClient(apikey=apikey)
         self.data = {
             "personalizations": [{"to": [], "subject": None}],
             "from": {"email": from_addr, "name": from_name},
             "content": [{"type": "text/plain", "value": None}],
         }
 
-    def send(self, to, subject, msg, cc=[], bcc=[], attachments=[], html=False):
+    def send(
+        self,
+        *,
+        to: str,
+        subject: str,
+        msg: str,
+        cc: list = [],
+        bcc: list = [],
+        attachments: list = [],
+        as_markdown: bool = False,
+    ):
         # personalizations -> to
         self.data["personalizations"][0]["to"] = []
         addrs = to if type(to) == list else [to]
@@ -24,9 +35,10 @@ class SendGrid:
         # personalizations -> subject
         self.data["personalizations"][0]["subject"] = subject
         # content -> value
-        self.data["content"][0]["value"] = msg
-        if html:
+        if as_markdown:
+            msg = markdown.markdown(msg)
             self.data["content"][0]["type"] = "text/html"
+        self.data["content"][0]["value"] = msg
         # personalizations -> cc
         if cc:
             self.data["personalizations"][0]["cc"] = []
@@ -42,9 +54,7 @@ class SendGrid:
         # attachments
         if attachments:
             self.data["attachments"] = []
-            attachments = (
-                attachments if type(attachments) in (list, tuple) else [attachments]
-            )
+            attachments = attachments if type(attachments) in (list, tuple) else [attachments]
             for attachment in attachments:
                 with open(attachment, "rb") as f:
                     file_content = f.read()

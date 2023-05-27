@@ -1,10 +1,12 @@
 # sendgrify
 
-> SendGrid for Humans
+SendGrid for Humans.
 
 **Sendgrify** is a Python package serving as a wrapper over the email delivery service [SendGrid](https://sendgrid.com/).
 
 This is an attempt to simplify the use of [sendgrid-python](https://github.com/sendgrid/sendgrid-python): the Official Twilio SendGrid Led, Community Driven Python API Library.
+
+> Sending emails, the easy way!
 
 ## Installation
 
@@ -14,92 +16,23 @@ $ pip install sendgrify
 
 ## Usage
 
-### Initialization
-
-Prior to use the package you should get a [SendGrid API key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).
-
-```python
-from sendgrify.core import SendGrid
-
-sg = Sendgrid(api_key='your_sendgrid_api_key',
-              from_addr='from@example.com',
-              from_name='Sendgrify')
-```
-
-### Sending simple email
+1. Grab your [SendGrid API Key](https://docs.sendgrid.com/ui/account-and-settings/api-keys).
+2. Code!
 
 ```python
-sg.send(to='to@example.com',
-        subject='Sendgrify is nice',
-        msg='Hi there!\nI am using this cool new Python package')
+>>> from sendgrid import SendGrid
+>>> handler = SendGrid('YOUR_SENDGRID_API_KEY', 'from_addr@example.com', 'From Name')
+>>> handler.send(to='hello@example.com', subject='Hi there', msg='This is just a test')
 ```
 
-### Sending to several recipients
+### Advanced usage
 
-```python
-sg.send(to=['one@example.com', 'two@example.com'],
-        subject='Sendgrify is nice',
-        msg='Hi there!\nI am using this cool new Python package')
-```
+Function `send()` also admits some more parameters:
 
-### Sending with carbon copy
-
-```python
-sg.send(to='to@example.com',
-        cc=['one@example.com', 'two@example.com'],
-        subject='Sendgrify is nice',
-        msg='Hi there!\nI am using this cool new Python package')
-```
-
-### Sending with blind carbon copy
-
-```python
-sg.send(to='to@example.com',
-        bcc=['one@example.com', 'two@example.com'],
-        subject='Sendgrify is nice',
-        msg='Hi there!\nI am using this cool new Python package')
-```
-
-### Sending with attachments
-
-```python
-sg.send(to='to@example.com',
-        subject='Sendgrify is nice',
-        msg='Hi there!\nI am using this cool new Python package',
-        attachments=['README.md', 'system.zip'])
-```
-
-> Set the proper path to your attachments.
-
-### Sending with html contents
-
-```python
-sg.send(to='to@example.com',
-        subject='Sendgrify is nice',
-        msg='Hi <b>there</b>!<br><br>I am using this <a href="https://pypi.org/">cool new Python package</a>',
-        html=True)
-```
-
-## Changelog
-
-| 1.0.2 | 01/03/2021 |
-| ----- | ---------- |
-
-- Relocate tests.
-- Add license and tests documentation.
-
-| 1.0.1 | 01/03/2021 |
-| ----- | ---------- |
-
-- Fix description and useful tags for PyPi.
-
-| 1.0.0 | 01/03/2021 |
-| ----- | ---------- |
-
-- Add initial code.
-- Add documentation.
-- Add tests.
-- Add makefile.
+- `cc`: as a list of emails for carbon copy.
+- `bcc`: as a list of emails for blind carbon copy.
+- `attachments`: as a list of paths for file attachments.
+- `as_markdown`: as a boolean (if True msg will be rendered from Markdown).
 
 ## Tests
 
