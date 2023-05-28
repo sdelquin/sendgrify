@@ -13,7 +13,7 @@ REQUIREMENTS = (
 
 setup(
     name='sendgrify',
-    version='2.0.1',
+    version='2.0.2',
     url='https://github.com/sdelquin/sendgrify.git',
     author='Sergio Delgado Quintero',
     author_email='sdelquin@gmail.com',
