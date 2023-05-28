@@ -36,11 +36,13 @@ Released 2021-03-01
 
 ## Version 1.0.1
 
-Release 2021-03-01
+Released 2021-03-01
 
 - Fix description and useful tags for PyPi.
 
 ## Version 1.0.0
+
+Released 2021-02-01
 
 - Add initial code.
 - Add documentation.
