@@ -10,6 +10,8 @@ Released XXXX-XX-XX
 
 Released 2023-05-28
 
+- Unpin markdown dependency.
+
 ## Version 2.0.1
 
 Released 2023-05-27
