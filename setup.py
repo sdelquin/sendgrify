@@ -8,7 +8,7 @@ long_description = (this_directory / 'README.md').read_text()
 
 REQUIREMENTS = (
     'sendgrid==5.3.0',
-    'markdown==3.4.3',
+    'markdown',
 )
 
 setup(
